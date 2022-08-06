@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vn">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sở khoa học và Công nghệ tỉnh Nam Định</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="./css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <!-- <script type="module" src="./index.ts"></script> -->
+
+    <style>
+        .map-canvas {
+            position: absolute;
+            top: 0px;
+            width: 100vw;
+            height: 100%;
+            background: #000;
+        }
+    </style>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+
+<body class="maps-page">
+    <div class="aspNetHidden">
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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"
+        />
+    </div>
+
+    <div class="aspNetHidden">
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="62D08C81" />
+    </div>
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-branch" href="#">
+                <img src="./images/logo.png" height="40" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">TRANG CHỦ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">BẢN ĐỒ DI SẢN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">DANH MỤC DI SẢN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">THƯ VIỆN HIỆN VẬT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">THƯ VIỆN VIDEO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">LIÊN HỆ</a>
+                    </li>
+                    <li class="dropdown language">
+                        <a href="/Languages/vi" class="dropdown-toggle" data-toggle="dropdown"><img src="./images/vietnam.png" /> Tiếng Việt
+                            <b class="caret"></b
+              ></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/en"><img src="./images/english.png" /> English</a>
+                </li>
+                <li>
+                  <a href="/ru"
+                    ><img src="./images/russia.png" /> Pусский Язык</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="search-icon">
+              <a href="javascript:void(0);" class="search">
+                <i class="fa fa-search search-btn"></i>
+              </a>
+              <!-- <div class="search-open">
+                <div class="input-group animated fadeInDown">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Tìm kiếm"
+                    id="txtKeyword"
+                  />
+                  <span class="input-group-btn">
+                    <a
+                      class="btn-u"
+                      id="btnSearch"
+                      data-url="/vi/ArticlesSearch"
+                    >
+                      <i class="fa fa-search"></i>
+                    </a>
+                  </span>
+                </div>
+              </div> -->
+            </li>
+            <li>
+                <i class="fa fa-question-circle-o"> </i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="map" style="position: relative; overflow: hidden">
+      <div id="map-canvas" class="map-canvas"></div>
+
+      <div>
+        <div
+          id="legend"
+          style="z-index: 0; position: absolute; top: 60px; right: 0px"
+        >
+          <div>
+            <label
+              ><input
+                class="checkbox-filter"
+                type="checkbox"
+                name="f4"
+                value="Di tích cấp Tỉnh, Thành phố"
+                checked=""
+              />
+              Di tích cấp Tỉnh/Thành phố</label
+            >
+          </div>
+          <div>
+            <label
+              ><input
+                class="checkbox-filter"
+                type="checkbox"
+                name="f1"
+                value="Danh lam thắng cảnh tiêu biểu"
+                checked=""
+              />
+              Danh lam thắng cảnh tiêu biểu</label
+            >
+          </div>
+          <div>
+            <label
+              ><input
+                class="checkbox-filter"
+                type="checkbox"
+                name="f2"
+                value="Di tích cấp Quốc gia đặc biệt"
+                checked=""
+              />
+              Di tích cấp Quốc gia đặc biệt</label
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- ----------------Thoi tiet----------- -->
+
+      <div>
+        <div
+          id="weatherbox"
+          style="z-index: 0; position: absolute; top: 0px; left: 0px"
+        >
+          <a
+            class="weatherwidget-io"
+            href="https://forecast7.com/en/12d24109d20/nha-trang/"
+            data-label_1="NAM ĐỊNH"
+            data-label_2="WEATHER"
+            data-icons="Climacons Animated"
+            data-theme="sky"
+            style="
+              display: block;
+              position: relative;
+              height: 569px;
+              padding: 0px;
+              overflow: hidden;
+              text-align: left;
+              text-indent: -299rem;
+            "
+            >NAM ĐỊNH WEATHER<iframe
+              id="weatherwidget-io-0"
+              class="weatherwidget-io-frame"
+              title="Weather Widget"
+              scrolling="no"
+              frameborder="0"
+              width="100%"
+              src="https://weatherwidget.io/w/"
+              style="
+                display: block;
+                position: absolute;
+                top: 0px;
+                height: 569px;
+              "
+            ></iframe
+          ></a>
+          <script>
+            !(function (d, s, id) {
+              var js,
+                fjs = d.getElementsByTagName(s)[0];
+              if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://weatherwidget.io/js/widget.min.js";
+                fjs.parentNode.insertBefore(js, fjs);
+              }
+            })(document, "script", "weatherwidget-io-js");
+          </script>
+        </div>
+      </div>
+
+      <a id="btn-back" href="http://localhost:3000/"
+        ><i class="fa-solid fa-right-from-bracket"></i
+      ></a>
+    </div>
+
+  
+
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTb1UdAZtz5h9toLIJnV-KTtWFQk04uIo&callback=myMap&v=weekly"
+      defer
+    ></script>
+
+    <script type="module" src="./Place.js"></script>
+  </body>
+</html>
